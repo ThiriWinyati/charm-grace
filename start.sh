@@ -1,5 +1,6 @@
 #!/bin/sh
 set -e
+sh ./init-db.sh || true
 
 # Render web services expect your app to bind to $PORT (default 10000). :contentReference[oaicite:0]{index=0}
 PORT_TO_USE="${PORT:-10000}"
