@@ -1,0 +1,235 @@
+/* General Styles */
+body {
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: none;
+}
+
+
+/* Modern Sidebar Styling */
+    /* Sidebar Styles */
+    .sidebar {
+        width: 250px; /* Fixed width */
+        background-color: #f8f9fa; /* Light gray background */
+        position: fixed; /* Fixed position */
+        height: 100%; /* Full height */
+        left: -250px; /* Initially hidden (offscreen) */
+        transition: all 0.3s ease; /* Smooth transition */
+        z-index: 1000; /* Ensure it appears above other content */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Ensure spacing between the links */
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .sidebar.active {
+        left: 0; /* Show the sidebar */
+    }
+    
+    .sidebar .nav-link:hover {
+        background-color: #e9ecef; /* Hover background */
+        color: #007bff; /* Hover text color */
+    }
+
+    .logout {
+        align-items: center;
+        align-content: center;
+        text-align: center;
+        bottom: 20px; /* Align at the bottom */
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Main content when sidebar is visible */
+    #main.active {
+        margin-left: 250px;
+        transition: all 0.3s ease;
+    }
+
+    /* Adjustments for small screens */
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 200px; /* Smaller sidebar for mobile */
+        }
+
+        #main.active {
+            margin-left: 200px;
+        }
+    }
+
+.sidebar .nav-link {
+  color: #333;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+  background-color: #ffdde1;
+  color: #333;
+}
+
+.sidebar .nav-link i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.sidebar .dropdown-container {
+  padding-left: 20px;
+  display: none;
+}
+
+.sidebar .dropdown-container .nav-link {
+  font-size: 0.9rem;
+}
+
+
+nav.navbar {
+  background-color: #fff; /* Change background color if necessary */
+  border-bottom: 2px solid #eaeaea; /* Optional: Add a subtle bottom border */
+}
+
+.brand-name {
+  font-size: 1.5rem; /* Adjust size */
+  font-weight: bold; /* Make the text bold */
+  color: #333; /* Adjust the text color */
+}
+
+img {
+  border-radius: 8px; /* Optional: Add rounded corners to the logo */
+}
+
+@media (max-width: 768px) {
+  nav.navbar {
+      justify-content: center; /* Center the content */
+  }
+
+  .brand-name {
+      font-size: 1.2rem; /* Reduce text size */
+  }
+
+  img {
+      width: 40px; /* Adjust logo size */
+  }
+}
+
+
+.container {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#openNav {
+  background-color: white;
+  color: #333;
+  border: none;
+}
+
+#openNav:hover {
+  background-color: #f1f1f1;
+}
+
+.brand-name {
+  /* font-size: 1.25rem; */
+  font-weight: 500;
+  margin-left: 10px;
+  color: black;
+}
+
+.navbar {
+  background-color: #00796b;
+  padding: 10px 20px;
+}
+
+.search{
+  border: none;
+  background-color: transparent;
+}
+
+.search:hover{
+  size: 40px;
+  color: rgb(235, 114, 134);
+  transition: color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.1); /* Slightly enlarges the icon */
+  cursor: pointer; /* Changes the cursor to a pointer */
+}
+
+.w3-bar-item.active {
+  background-color: pink; /* Choose your desired color */
+  color: black; /* Text color for better contrast */
+}
+
+.notification-bell {
+  color: rgb(235, 114, 134);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.notification-bell:hover {
+  color: rgb(235, 114, 134);
+   transform: scale(1.1); /* Slightly enlarges the icon */
+  cursor: pointer; /* Changes the cursor to a pointer */
+}
+
+#viewProdutsTable img {
+  width: 1000px; /* Adjust as needed */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
+}
+
+#viewProdutsTable .carousel-inner {
+  max-width: 500px; /* Match the image width */
+  margin: auto;
+}
+
+#viewProdutsTable .carousel-item {
+  text-align: center;
+}
+
+
+.thead{
+  text-align: center;
+}
+
+#products td{
+  align-content: center;
+  text-align: center;
+}
+
+#products .btn btn-link {
+  color: #870f55;
+}
+
+#viewProdutsTable th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.custom-edit {
+  color: black; /* Change to your desired color */
+}
+
+.custom-edit:hover {
+  color: rgb(119, 176, 233); /* Change to your desired color */
+  transform: scale(1.1);
+}
+
+.custom-delete {
+  color: black; /* Change to your desired color */
+}
+
+.custom-delete:hover {
+  color: rgb(235, 114, 134); /* Change to your desired color */
+  transform: scale(1.2);
+}
+
+
+
+
+
+
+
