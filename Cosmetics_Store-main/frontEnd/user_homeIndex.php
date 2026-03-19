@@ -1,34 +1,60 @@
 <?php
-    require_once "../db_connect.php";
-    
-    if(!isset($_SESSION)) {
-        session_start();
-    }
+if (!isset($_SESSION)) {
+    session_start();
+}
 
-    $sql = "SELECT 
-            p.Product_ID, p.Name, c.Category_Name AS categories, p.Price, p.Stock_Quantity, 
-            a.Name AS admin_users, b.brand_name AS brands, p.Description, p.created_at,
+$conn = new mysqli(
+    getenv("DB_HOST"),
+    getenv("DB_USER"),
+    getenv("DB_PASS"),
+    getenv("DB_NAME"),
+    getenv("DB_PORT")
+);
+
+if ($conn->connect_error) {
+    die("Database connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT 
+            p.Product_ID, 
+            p.Name, 
+            c.Category_Name AS categories, 
+            p.Price, 
+            p.Stock_Quantity, 
+            a.Name AS admin_users, 
+            b.brand_name AS brands, 
+            p.Description, 
+            p.created_at,
             GROUP_CONCAT(pi.image_path) AS images
         FROM products p
         LEFT JOIN categories c ON p.Category_ID = c.Category_ID
         LEFT JOIN admin_users a ON p.Admin_User_ID = a.Admin_User_ID
         LEFT JOIN brands b ON p.brand_id = b.brand_id
         LEFT JOIN product_images pi ON pi.Product_ID = p.Product_ID
-        GROUP BY p.Product_ID
-        ORDER BY p.Product_ID;";
+        GROUP BY 
+            p.Product_ID, 
+            p.Name, 
+            c.Category_Name, 
+            p.Price, 
+            p.Stock_Quantity, 
+            a.Name, 
+            b.brand_name, 
+            p.Description, 
+            p.created_at
+        ORDER BY p.Product_ID";
 
-    try{
-      $stmt = $conn->query($sql);
-      $status = $stmt->execute();
-      if($status) {
-        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      }
+$products = [];
 
-    }catch(PDOException $e) {
-        echo $e->getMessage();
+$result = $conn->query($sql);
+
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $products[] = $row;
     }
+} else {
+    die("Query failed: " . $conn->error);
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
