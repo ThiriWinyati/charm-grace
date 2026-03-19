@@ -1,16 +1,14 @@
 <?php
-    $server = "localhost";
-    $port = 3306;
-    $user = "root";
-    $password = "";
+    $conn = mysqli_connect(
+    getenv("DB_HOST"),
+    getenv("DB_USER"),
+    getenv("DB_PASS"),
+    getenv("DB_NAME"),
+    getenv("DB_PORT")
+);
 
-    try{
-        $conn = new PDO("mysql:host=$server; port=$port; dbname=cosmetics_store", $user, $password);
-        //echo "connection got";
-        $conn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    catch(Exception $e){
-        echo $e -> getMessage();
-    }
+if (!$conn) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
 
 ?>
